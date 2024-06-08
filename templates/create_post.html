@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+<!-- create_post.html -->
+<!DOCTYPE html>
+<html>
+<head>
+      <style>
+            .form-group label{
+                  font-size: 20px;
+            }
+            .form-group input{
+                  display: block;
+                  width: 80%;
+            }
+            .form-group textarea{
+                  display: block;
+                  width: 100%;
+            }
+      </style>
+      <title>Create Post</title>
+</head>
+<body>
+      <div class="container">
+            <div class="row">
+                  <div class="col-md-8 card mb-4 mt-3">
+                        <div class="title-container">
+                              <h3 class="post-title">Create Post</h3>
+                        </div>
+                        <hr>
+                        <form method="post">
+                              {% csrf_token %}
+                              <div class="form-group">
+                                    <label for="id_title">Title:</label>
+                                    {{form.title}}
+                              </div>
+                              <div class="form-group">
+                                    <label for="id_content">Content:</label>
+                                    {{form.content}}
+                              </div>
+                              <button type="submit" class="btn btn-normal" style="float: left; margin: 15px; margin-left: 10px; margin-bottom: 20px;">Post</button>
+                        </form>
+                  </div>
+                  {% block sidebar %} {% include "sidebar.html" %} {% endblock sidebar %}
+            </div>
+      </div>
+</body>
+</html>
+
+{% endblock content %}

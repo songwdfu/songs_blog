@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+      <head>
+            <title>Song's Blog</title>
+            <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+            <meta name="google" content="notranslate"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1"/>
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+            crossorigin="anonymous"/>
+      </head>
+
+      <body>
+            <style>
+                  body {
+                        font-family: "Roboto", sans-serif;
+                        font-size: 18px;
+                        background-color: #fdfdfd;
+                  }
+                  .shadow {
+                        box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.1);
+                  }
+                  .btn-danger {
+                        color: #fff;
+                        background-color: #f00000;
+                        border-color: #dc281e;
+                  }
+                  .btn-normal {
+                        font-size: 17px;
+                        color: #fff;
+                        background-color: #3061b0;
+                        border-color: #144189;
+                        width: min-content;
+                        height: min-content;
+                  }
+                  .masthead {
+                        background: #3398E1;
+                        height: auto;
+                        padding-bottom: 15px;
+                        box-shadow: 0 16px 48px #E3E7EB;
+                        padding-top: 10px;
+                  }
+                  .masthead-dark {
+                        background: #3061b0;
+                  }
+                  .title-container {
+                        text-align: left;
+                        margin-top: 20px;
+                  }
+                  .form-group {
+                        margin: 10px;
+                  }
+                  .title-container {
+                        text-align: left;
+                        margin-top: 20px;
+                  }
+                  .post-divider {
+                        border: 0;
+                        border-top: 1px solid #cccccc;
+                        margin-top: 0px;
+                        margin-bottom: 20px;
+                  }
+                  .post-title {
+                        margin: 0;
+                        text-align: left;
+                        display: inline-block;
+                  }
+                  .card {
+                        box-shadow: 0 16px 48px #E3E7EB;
+                  }
+                  .btn-back {
+                        font-size: 14px;
+                        margin-top: 12px;
+                        margin-left: 12px;
+                  }
+            </style>
+            
+            <!-- Navigation -->
+            <nav class="navbar navbar-expand-lg navbar-light bg-light shadow" id="mainNav">
+                  <div class="container-fluid">
+                        <a class="navbar-brand" href="{% url 'home' %}">Song's Blog</a>
+                        <button class="navbar-toggler navbar-toggle-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                              aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                              <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarResponsive">
+                              <ul class="navbar-nav ml-auto">
+                                    <li class="nav-item text-black">
+                                          <a class="nav-link text-black font-weight-bold" href="#">About</a>
+                                    </li>
+                                    <li class="nav-item text-black">
+                                          <a class="nav-link text-black font-weight-bold" href="#">Policy</a>
+                                    </li>
+                                    <li class="nav-item text-black">
+                                          <a class="nav-link text-black font-weight-bold" href="#">Contact</a>
+                                    </li>
+                              </ul>
+                              <ul class="navbar-nav ms-auto">
+                                    {% if not user.is_authenticated %}
+                                          <li class="nav-item">
+                                                <a class="nav-link font-weight-bold" style="color: #144189;" href="{% url 'register' %}">register</a>
+                                          </li>
+                                          <li class="nav-item">
+                                                <a class="nav-link font-weight-bold" style="color: #144189;" href="{% url 'login' %}">login</a>
+                                          </li>
+                                    {% else %}
+                                          <li class="nav-item">
+                                                <span class="nav-link font-weight-bold" style="color: #144189;">Welcome, {{user.username}}!</span>
+                                          </li>
+                                          <li class="nav-item">
+                                                <a class="nav-link font-weight-bold" style="color: #144189;" href="{% url 'logout' %}">logout</a>
+                                          </li>
+                                    {% endif %}
+                              </ul>
+                        </div>
+                  </div>
+            </nav>
+
+            <!-- Main Content -->
+            {% block content %}
+            <!-- Content goes here -->
+            {% endblock content %}
+
+            <!-- Footer -->
+            <footer class="py-3 bg-grey">
+                  <p class="m-0 text-dark text-center ">Copyright &copy; Song's Blog</p>
+            </footer>
+      </body>
+</html>

@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+
+<head>
+      <style>
+            body {
+                  font-family: "Roboto", sans-serif;
+                  font-size: 18px;
+                  background-color: #fdfdfd;
+            }
+      </style>
+      <header class="masthead masthead-dark">
+      <div class="overlay"></div>
+            <div class="container">
+                <div class="row">
+                    <div class=" col-md-8 col-md-10 mx-auto">
+                        <div class="site-heading">
+                            <h3 class=" site-heading my-4 mt-3 text-white"> Welcome to Song's Blog </h3>
+                            <p class="text-light">This website is still being completed... &nbsp
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+      </header>
+      <div class="header">
+            <a href="{% url 'home' %}" class="btn btn-normal btn-back">&larr; Back</a>
+      </div>
+</head>
+<body>
+      <div class="container">
+            <div class="row">
+                  <div class="col-md-8 card mb-4 mt-3">
+                        <div class="title-container">
+                              <h3 class="post-title">{% block title %} {{post.title}} {% endblock title %}</h3>
+                        </div>
+                        <p class="text-muted"> {{post.author}} | {{post.updated_on}} </p>
+                        <hr class="post-divider">
+                        <p class="card-text" style="margin-bottom: 10px;"> {{post.content | safe}} </p>
+                  </div>
+                  {% block sidebar %} {% include "sidebar.html" %} {% endblock sidebar %}
+            </div>
+      </div>
+</body>
+{% endblock content %}
